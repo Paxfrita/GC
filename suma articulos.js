@@ -10,7 +10,7 @@ const htmlOutput = lines.map(line => {
     if (match) {
         const id = match[1];
         const desc = match[2];
-        const multa = match[3];
+        const sancion = match[3];
         return `<li id="art-${id.replace('.', '-')}" class="flex items-center py-2" data-sancion="${sancion.trim()}"> <span>${line.trim()}</span> </li>`;
     }
     return "";  
