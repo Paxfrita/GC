@@ -17,7 +17,7 @@ function removePlusMinusFromText(text) {
 }
 
 function filterArticles(query) {
-    const listItems = document.querySelectorAll('#articlesList li');
+    const listItems = document.querySelectorAll('#articulosList li');
     const normalizedQuery = removeDiacritics(query.toLowerCase());
 
     listItems.forEach(item => {
@@ -49,7 +49,7 @@ document.getElementById('copyButton').addEventListener('click', function () {
 const userEnteredSanctions = new Map();     
 
 function getSanctionValue(item) {
-    const sanctionText = item.getAttribute('data-sancion');
+    const sanctionText = item.getAttribute('data-multa');
     const itemId = item.id;
 
   
@@ -68,14 +68,14 @@ function getSanctionValue(item) {
         let maxValue = parseFloat(rangeMatch[2]);
 
        
-        let userInput = prompt(`Ingrese una cantidad entre ${minValue} y ${maxValue}:`, '');
+        let userInput = prompt(`Que cantidad desea ingresar ${minValue} y ${maxValue}:`, '');
         if (userInput !== null) {
             let inputValue = parseFloat(userInput);
             if (!isNaN(inputValue) && inputValue >= minValue && inputValue <= maxValue) {
                 sanctionValue = inputValue;
                 userEnteredSanctions.set(itemId, sanctionValue); 
             } else {
-                alert(`Debe ingresar un valor válido entre ${minValue} y ${maxValue}.`);
+                alert(`Debe ser un valor entre ${minValue} y ${maxValue}.`);
                 return getSanctionValue(item); 
             }
         } else {
@@ -120,7 +120,7 @@ function updateCommand() {
     let totalSinPrefijo = 0;
     let totalConPrefijo = 0;
     let articulosDeArresto = [];
-    let commandText = "/multar usuario: razon:";
+    let commandText = "/multas poner usuario: razon:";
 
     selectedItems.forEach(item => {
         const sanctionValue = getSanctionValue(item);
