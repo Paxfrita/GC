@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-const data = fs.readFileSync('articulos.txt', 'utf-8');
+const data = fs.readFileSync('articles.txt', 'utf-8');
 
 
 const lines = data.split('\n');
